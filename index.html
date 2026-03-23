@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Prakriti Bookmark Store (Test)</title>
+<title>Prakriti Store 💜</title>
 
 <style>
 body {
   font-family: Arial;
+  background: #e6d6ff; /* LAVENDER */
+  margin: 0;
   text-align: center;
-  background: #ffe6f0;
 }
 
-/* PRODUCT ROW */
-#productRow {
+/* SECTION */
+.section {
+  margin: 20px;
+}
+
+/* SCROLL CONTAINER */
+.scroll-container {
+  position: relative;
+}
+
+/* HORIZONTAL SCROLL */
+.scroll {
   display: flex;
-  gap: 15px;
   overflow-x: auto;
-  padding: 10px;
+  gap: 15px;
+  padding: 10px 40px;
   scroll-behavior: smooth;
 }
 
+/* CARD */
 .card {
-  min-width: 160px;
+  min-width: 180px;
   background: white;
   padding: 10px;
   border-radius: 15px;
-  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .card img {
@@ -32,12 +45,34 @@ body {
   border-radius: 10px;
 }
 
+/* BUTTON */
 button {
-  background: hotpink;
+  background: #b57edc;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+/* ARROWS */
+.arrow {
+  position: absolute;
+  top: 40%;
+  background: #b57edc;
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
 }
 </style>
 
@@ -45,88 +80,115 @@ button {
 
 <body>
 
-<h1>Prakriti Bookmark Store 💖</h1>
+<h1>Prakriti Bookmark Store 💜</h1>
 
-<h2>Cute Bookmarks 🎀</h2>
+<!-- CUTE BOOKMARKS -->
+<div class="section">
+  <h2>Cute Bookmarks 🎀</h2>
 
-<!-- VIEW ALL BUTTON -->
-<button onclick="viewAll()">View All</button>
+  <div class="scroll-container">
 
-<!-- PRODUCTS -->
-<div id="productRow">
+    <button class="arrow left" onclick="scrollLeft('scroll1')">◀</button>
 
-  <!-- PRODUCT 1 -->
-  <div class="card" onclick="showDetails('p1')">
-    <img src="https://via.placeholder.com/150">
-    <p>₹50</p>
+    <div class="scroll" id="scroll1">
+
+      <div class="card">
+        <img src="https://picsum.photos/200/200">
+        <h4>Floral</h4>
+        <p>₹50</p>
+      </div>
+
+      <div class="card">
+        <img src="https://picsum.photos/200/201">
+        <h4>Anime</h4>
+        <p>₹70</p>
+      </div>
+
+      <div class="card">
+        <img src="https://picsum.photos/200/202">
+        <h4>Custom</h4>
+        <p>₹90</p>
+      </div>
+
+    </div>
+
+    <button class="arrow right" onclick="scrollRight('scroll1')">▶</button>
+
   </div>
-
-  <!-- PRODUCT 2 -->
-  <div class="card" onclick="showDetails('p2')">
-    <img src="https://via.placeholder.com/150">
-    <p>₹70</p>
-  </div>
-
-  <!-- PRODUCT 3 -->
-  <div class="card" onclick="showDetails('p3')">
-    <img src="https://via.placeholder.com/150">
-    <p>₹90</p>
-  </div>
-
 </div>
 
-<!-- DETAILS -->
-<div id="details" style="margin-top:20px;"></div>
+<!-- HANDMADE CARDS -->
+<div class="section">
+  <h2>Handmade Cards 🎨</h2>
+
+  <div class="scroll-container">
+
+    <button class="arrow left" onclick="scrollLeft('scroll2')">◀</button>
+
+    <div class="scroll" id="scroll2">
+
+      <div class="card">
+        <img src="https://picsum.photos/200/203">
+        <h4>Birthday</h4>
+        <p>₹120</p>
+      </div>
+
+      <div class="card">
+        <img src="https://picsum.photos/200/204">
+        <h4>Love</h4>
+        <p>₹150</p>
+      </div>
+
+    </div>
+
+    <button class="arrow right" onclick="scrollRight('scroll2')">▶</button>
+
+  </div>
+</div>
+
+<!-- PRINTED BOOKMARKS -->
+<div class="section">
+  <h2>Printed Bookmarks 📚</h2>
+
+  <div class="scroll-container">
+
+    <button class="arrow left" onclick="scrollLeft('scroll3')">◀</button>
+
+    <div class="scroll" id="scroll3">
+
+      <div class="card">
+        <img src="https://picsum.photos/200/205">
+        <h4>Minimal</h4>
+        <p>₹60</p>
+      </div>
+
+      <div class="card">
+        <img src="https://picsum.photos/200/206">
+        <h4>Aesthetic</h4>
+        <p>₹80</p>
+      </div>
+
+    </div>
+
+    <button class="arrow right" onclick="scrollRight('scroll3')">▶</button>
+
+  </div>
+</div>
 
 <script>
-
-/* VIEW ALL */
-function viewAll() {
-  document.getElementById("productRow").style.flexWrap = "wrap";
-  document.getElementById("productRow").style.overflowX = "hidden";
+function scrollLeft(id) {
+  document.getElementById(id).scrollBy({
+    left: -200,
+    behavior: 'smooth'
+  });
 }
 
-/* PRODUCT DETAILS */
-function showDetails(product) {
-
-  let content = "";
-
-  if(product === "p1") {
-    content = `
-      <h3>Floral Bookmark</h3>
-      <p>Price: ₹50</p>
-      <p>Handmade cute floral design 🌸</p>
-      <a href="https://wa.me/919958676897?text=Hi%20I%20want%20to%20order%20Floral%20Bookmark%20for%20₹50" target="_blank">
-      <button>Buy Now</button>
-      </a>
-    `;
-  }
-
-  if(product === "p2") {
-    content = `
-      <h3>Anime Bookmark</h3>
-      <p>Price: ₹70</p>
-      <p>Perfect for anime lovers 💖</p>
-      <a href="https://wa.me/919958676897?text=Hi%20I%20want%20to%20order%20Anime%20Bookmark%20for%20₹70" target="_blank">
-      <button>Buy Now</button>
-      </a>
-    `;
-  }
-
-  if(product === "p3") {
-    content = `
-      <h3>Custom Bookmark</h3>
-      <p>Price: ₹90</p>
-      <p>Personalized with your name ✨</p>
-      <a href="https://wa.me/919958676897?text=Hi%20I%20want%20to%20order%20Custom%20Bookmark%20for%20₹90" target="_blank">
-      <button>Buy Now</button>
-      </a>
-    `;
-  }
-
-  document.getElementById("details").innerHTML = content;
+function scrollRight(id) {
+  document.getElementById(id).scrollBy({
+    left: 200,
+    behavior: 'smooth'
+  });
 }
-
 </script>
 
 </body>
