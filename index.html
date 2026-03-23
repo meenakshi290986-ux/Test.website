@@ -1,133 +1,133 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
+<title>Prakriti Bookmark Store (Test)</title>
 
-  <meta charset="UTF-8">
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  background: #ffe6f0;
+}
 
-  <title>Prakriti's Bookmark Store</title>
+/* PRODUCT ROW */
+#productRow {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
 
-  <style>
+.card {
+  min-width: 160px;
+  background: white;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+}
 
-    body {
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
 
-      font-family: Arial, sans-serif;
-
-      background-color: #fff0f5;
-
-      text-align: center;
-
-      margin: 0;
-
-      padding: 0;
-
-    }
-
-    header {
-
-      background-color: #ff66b2;
-
-      color: white;
-
-      padding: 20px;
-
-      font-size: 28px;
-
-    }
-
-    .product {
-
-      background-color: white;
-
-      margin: 30px auto;
-
-      padding: 20px;
-
-      width: 250px;
-
-      border-radius: 15px;
-
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-
-    }
-
-    button {
-
-      background-color: #ff3399;
-
-      color: white;
-
-      padding: 10px 15px;
-
-      border: none;
-
-      border-radius: 8px;
-
-      cursor: pointer;
-
-      font-size: 14px;
-
-    }
-
-    button:hover {
-
-      background-color: #cc0066;
-
-    }
-
-  </style>
+button {
+  background: hotpink;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+</style>
 
 </head>
 
 <body>
 
-  <header>
+<h1>Prakriti Bookmark Store 💖</h1>
 
-    📚 Prakriti's Cute Bookmark Store 💖
+<h2>Cute Bookmarks 🎀</h2>
 
-  </header>
+<!-- VIEW ALL BUTTON -->
+<button onclick="viewAll()">View All</button>
 
-  <div class="product">
+<!-- PRODUCTS -->
+<div id="productRow">
 
-    <h2>Floral Bookmark 🌸</h2>
-
-    <p>Price: ₹50</p>
-
-    <button onclick="order()">Order Now</button>
-
+  <!-- PRODUCT 1 -->
+  <div class="card" onclick="showDetails('p1')">
+    <img src="https://via.placeholder.com/150">
+    <p>₹50</p>
   </div>
 
-  <div class="product">
-
-    <h2>Aesthetic Quote Bookmark ✨</h2>
-
-    <p>Price: ₹50</p>
-
-    <button onclick="order()">Order Now</button>
-
+  <!-- PRODUCT 2 -->
+  <div class="card" onclick="showDetails('p2')">
+    <img src="https://via.placeholder.com/150">
+    <p>₹70</p>
   </div>
 
-  <div class="product">
-
-    <h2>Cartoon Bookmark 🐻</h2>
-
-    <p>Price: ₹50</p>
-
-    <button onclick="order()">Order Now</button>
-
+  <!-- PRODUCT 3 -->
+  <div class="card" onclick="showDetails('p3')">
+    <img src="https://via.placeholder.com/150">
+    <p>₹90</p>
   </div>
 
-  <script>
+</div>
 
-    function order() {
+<!-- DETAILS -->
+<div id="details" style="margin-top:20px;"></div>
 
-      alert("Thank you for your order! Please contact me on WhatsApp to confirm 💕");
+<script>
 
-    }
+/* VIEW ALL */
+function viewAll() {
+  document.getElementById("productRow").style.flexWrap = "wrap";
+  document.getElementById("productRow").style.overflowX = "hidden";
+}
 
-  </script>
+/* PRODUCT DETAILS */
+function showDetails(product) {
+
+  let content = "";
+
+  if(product === "p1") {
+    content = `
+      <h3>Floral Bookmark</h3>
+      <p>Price: ₹50</p>
+      <p>Handmade cute floral design 🌸</p>
+      <a href="https://wa.me/919958676897?text=Hi%20I%20want%20to%20order%20Floral%20Bookmark%20for%20₹50" target="_blank">
+      <button>Buy Now</button>
+      </a>
+    `;
+  }
+
+  if(product === "p2") {
+    content = `
+      <h3>Anime Bookmark</h3>
+      <p>Price: ₹70</p>
+      <p>Perfect for anime lovers 💖</p>
+      <a href="https://wa.me/919958676897?text=Hi%20I%20want%20to%20order%20Anime%20Bookmark%20for%20₹70" target="_blank">
+      <button>Buy Now</button>
+      </a>
+    `;
+  }
+
+  if(product === "p3") {
+    content = `
+      <h3>Custom Bookmark</h3>
+      <p>Price: ₹90</p>
+      <p>Personalized with your name ✨</p>
+      <a href="https://wa.me/919958676897?text=Hi%20I%20want%20to%20order%20Custom%20Bookmark%20for%20₹90" target="_blank">
+      <button>Buy Now</button>
+      </a>
+    `;
+  }
+
+  document.getElementById("details").innerHTML = content;
+}
+
+</script>
 
 </body>
-
 </html>
