@@ -1,201 +1,210 @@
 
-<!DOCTYPE html>
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="en">
 <head>
-<title>Prakriti Store 💜</title>
-
-<style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prakriti Store 💜</title><style>
 body {
-  font-family: Arial;
-  background: #e6d6ff; /* LAVENDER */
   margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f8f5ff;
+}
+
+.header {
+  background: #e6dbff;
+  text-align: center;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  width: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.hero {
+  background: #d9ccff;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero h1 {
+  font-size: 30px;
+  color: white;
+}
+
+.shop-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: white;
+  border: none;
+  border-radius: 20px;
+}
+
+.categories {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 15px;
+}
+
+.cat-btn {
+  padding: 10px 18px;
+  background: #e6dbff;
+  border-radius: 20px;
+  border: none;
+  white-space: nowrap;
+}
+
+.section-box {
+  background: white;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
   text-align: center;
 }
 
-/* SECTION */
-.section {
-  margin: 20px;
-}
-
-/* SCROLL CONTAINER */
-.scroll-container {
-  position: relative;
-}
-
-/* HORIZONTAL SCROLL */
-.scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  padding: 10px 40px;
-  scroll-behavior: smooth;
-}
-
- .card {
-  min-width: 85%;   /* PERFECT for phone */
-  max-width: 85%;
-  scroll-snap-align: center;  /* CENTER SNAP ✨ */
-
-  background: white;
-  padding: 12px;
+.section-box button {
+  padding: 10px 20px;
+  border: none;
   border-radius: 20px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: #e6dbff;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 15px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 10px;
+  text-align: center;
+  position: relative;
 }
 
 .card img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
-/* BUTTON */
-button {
-  background: #b57edc;
-  color: white;
-  border: none;
-  padding: 8px;
-  border-radius: 8px;
-  margin-top: 5px;
-}
-
-/* ARROWS */
-.arrow {
+.sold {
   position: absolute;
-  top: 40%;
-  background: #b57edc;
-  color: white;
+  top: 10px;
+  left: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+.view-all {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: #e6dbff;
   border: none;
-  padding: 10px;
-  border-radius: 50%;
-  z-index: 1;
+  border-radius: 10px;
 }
 
-.left {
-  left: 0;
+.product-page {
+  display: none;
+  padding: 20px;
 }
 
-.right {
-  right: 0;
+.back {
+  margin-bottom: 10px;
 }
-</style>
+</style></head><body><div class="header">
+  <img src="logo.png" class="logo">
+</div><div class="hero">
+  <h1>Prakriti Store 💜</h1>
+  <button class="shop-btn" onclick="scrollToProducts()">SHOP NOW</button>
+</div><!-- CUSTOM BOOKMARK WHITE BOX --><div class="section-box">
+  <h2>Custom Bookmark</h2>
+  <p>Get your own personalised bookmark 💜</p>
+  <button onclick="orderWhatsApp()">Shop Now</button>
+</div><div class="categories">
+  <button class="cat-btn" onclick="filter('all')">All</button>
+  <button class="cat-btn" onclick="filter('cards')">Handmade Cards</button>
+  <button class="cat-btn" onclick="filter('printed')">Bookmarks</button>
+</div><div class="products" id="products"></div><button class="view-all" onclick="showAll()">View All</button>
 
-</head>
+<div class="product-page" id="productPage"></div><script>
+const items = [
+  {
+    name: 'Handmade Card Set',
+    price: '₹100',
+    category: 'cards',
+    img: 'https://via.placeholder.com/200',
+    sold: false
+  },
+  {
+    name: 'Printed Bookmark',
+    price: '₹50',
+    category: 'printed',
+    img: 'https://via.placeholder.com/200',
+    sold: false
+  }
+];
 
-<body>
+function display(list) {
+  document.getElementById('productPage').style.display = 'none';
+  const container = document.getElementById('products');
+  container.style.display = 'grid';
+  container.innerHTML = '';
 
-<h1>Prakriti Bookmark Store 💜</h1>
-
-<!-- CUTE BOOKMARKS -->
-<div class="section">
-  <h2>handmade Bookmarks 🎀</h2>
-
-  <div class="scroll-container">
-
-    <button class="arrow left" onclick="scrollLeft('scroll1')">◀</button>
-
-    <div class="scroll" id="scroll1">
-
-      <div class="card">
-        <img src="https://picsum.photos/200/200">
-        <h4>Floral</h4>
-        <p>₹50</p>
-      </div>
-
-      <div class="card">
-        <img src="https://picsum.photos/200/201">
-        <h4>Anime</h4>
-        <p>₹70</p>
-      </div>
-
-      <div class="card">
-        <img src="https://picsum.photos/200/202">
-        <h4>Custom</h4>
-        <p>₹90</p>
-      </div>
-
-    </div>
-
-    <button class="arrow right" onclick="scrollRight('scroll1')">▶</button>
-
-  </div>
-</div>
-
-<!-- HANDMADE CARDS -->
-<div class="section">
-  <h2>Handmade Cards 🎨</h2>
-
-  <div class="scroll-container">
-
-    <button class="arrow left" onclick="scrollLeft('scroll2')">◀</button>
-
-    <div class="scroll" id="scroll2">
-
-      <div class="card">
-        <img src="https://picsum.photos/200/203">
-        <h4>Birthday</h4>
-        <p>₹120</p>
-      </div>
-
-      <div class="card">
-        <img src="https://picsum.photos/200/204">
-        <h4>Love</h4>
-        <p>₹150</p>
-      </div>
-
-    </div>
-
-    <button class="arrow right" onclick="scrollRight('scroll2')">▶</button>
-
-  </div>
-</div>
-
-<!-- PRINTED BOOKMARKS -->
-<div class="section">
-  <h2>Printed Bookmarks 📚</h2>
-
-  <div class="scroll-container">
-
-    <button class="arrow left" onclick="scrollLeft('scroll3')">◀</button>
-
-    <div class="scroll" id="scroll3">
-
-      <div class="card">
-        <img src="https://picsum.photos/200/205">
-        <h4>Minimal</h4>
-        <p>₹60</p>
-      </div>
-
-      <div class="card">
-        <img src="https://picsum.photos/200/206">
-        <h4>Aesthetic</h4>
-        <p>₹80</p>
-      </div>
-
-    </div>
-
-    <button class="arrow right" onclick="scrollRight('scroll3')">▶</button>
-
-  </div>
-</div>
-
-<script>
-function scrollLeft(id) {
-  document.getElementById(id).scrollBy({
-    left: -200,
-    behavior: 'smooth'
+  list.forEach(item => {
+    container.innerHTML += `
+    <div class="card" onclick="openProduct('${item.name}')">
+      ${item.sold ? '<div class="sold">SOLD</div>' : ''}
+      <img src="${item.img}">
+      <h4>${item.name}</h4>
+      <p>${item.price}</p>
+    </div>`;
   });
 }
 
-function scrollRight(id) {
-  document.getElementById(id).scrollBy({
-    left: 200,
-    behavior: 'smooth'
-  });
+function filter(category) {
+  if(category === 'all') return display(items);
+  display(items.filter(i => i.category === category));
 }
-</script>
 
-</body>
-  </html>
+function showAll() {
+  display(items);
+}
+
+function scrollToProducts() {
+  document.getElementById('products').scrollIntoView({behavior: 'smooth'});
+}
+
+function orderWhatsApp(product = '') {
+  const phone = '91YOURNUMBER';
+  const message = 'Hello, I want to order';
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`);
+}
+
+function openProduct(name) {
+  const item = items.find(i => i.name === name);
+  document.getElementById('products').style.display = 'none';
+
+  const page = document.getElementById('productPage');
+  page.style.display = 'block';
+
+  page.innerHTML = `
+    <button class="back" onclick="showAll()">← Back</button>
+    <img src="${item.img}" style="width:100%;border-radius:15px">
+    <h2>${item.name}</h2>
+    <p>${item.price}</p>
+    <button onclick="orderWhatsApp('${item.name}')" style="width:100%;padding:10px;border:none;border-radius:10px;background:#d9ccff">
+      Order on WhatsApp
+    </button>
+  `;
+}
+
+display(items);
+</script></body>
+</html>
