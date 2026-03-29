@@ -122,12 +122,12 @@ body {
   <img src= "https://github.com/meenakshi290986-ux/Test.website/raw/main/IMG-20260328-WA0028.jpg"
     class="logo">
 </div><div class="hero">
-  <h1>Prakriti Store 💜</h1>
+</h1>✨🌷🍥 Prakriti  Store✨🌷🍥</h1>
   <button class="shop-btn" onclick="scrollToProducts()">SHOP NOW</button>
 </div><!-- CUSTOM BOOKMARK WHITE BOX --><div class="section-box">
   <h2>Custom Bookmark</h2>
   <p>Get your own personalised bookmark 💜</p>
-  <button onclick="orderWhatsApp()">Shop Now</button>
+  <button onclick="orderWhatsApp(buynow)</button>
 </div><div class="categories">
   <button class="cat-btn" onclick="filter('all')">All</button>
   <button class="cat-btn" onclick="filter('cards')">Handmade Cards</button>
@@ -140,18 +140,17 @@ const items = [
     name: 'Handmade Card Set',
     price: '₹100',
     category: 'cards',
-    img: 'https://via.placeholder.com/200',
-    sold: false
+    img: 'https://via.placeholder.com/150/eedbff/6a5acd?text=bookmark'>
+  sold: false
   },
   {
-    name: 'Printed Bookmark',
+  name:'Printed Bookmark',
     price: '₹50',
-    category: 'printed',
-    img: 'https://via.placeholder.com/200',
-    sold: false
-  }
-];
-
+    category: 'printed'
+    img: 'https://via.placeholder.com/150/eedbff/6a5acd?text=bookmark'> 
+    sold: false 
+ },
+  {
 function display(list) {
   document.getElementById('productPage').style.display = 'none';
   const container = document.getElementById('products');
