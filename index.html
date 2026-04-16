@@ -2,42 +2,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cozy Corner 💜</title>
 
 <style>
-body { margin:0; font-family:Arial; background:#f5edff; }
+body { margin:0; font-family: Arial; background:#f5edff; }
+
 header { text-align:center; padding:15px; }
 header img { width:70px; border-radius:50%; }
 h1 { color:#6a4ca3; }
 
 .section { padding:15px; }
-.scroll-row { display:flex; overflow-x:auto; gap:10px; }
+
+.scroll-row {
+  display:flex;
+  overflow-x:auto;
+  gap:12px;
+}
 
 .card {
   min-width:140px;
   background:white;
-  border-radius:10px;
+  border-radius:12px;
   padding:10px;
   text-align:center;
+  cursor:pointer;
 }
 
-.card img { width:100%; border-radius:10px; }
+.card img {
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+#productPage { display:none; padding:15px; }
+
+.product-img {
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:12px;
+}
 
 button {
   background:#b38bff;
   color:white;
   border:none;
-  padding:8px;
-  border-radius:5px;
-  cursor:pointer;
+  padding:10px;
+  border-radius:6px;
+  width:100%;
+  margin-top:10px;
 }
-
-.view-btn { float:right; }
-
-.hidden { display:none; }
-.vertical .card { margin-bottom:15px; }
 </style>
 </head>
 
@@ -48,157 +63,124 @@ button {
 <h1>Cozy Corner 💜</h1>
 </header>
 
-<!-- PHOTO SCROLL -->
+<div id="home">
+
+<!-- ANIME -->
 <div class="section">
+<h2>Anime 🎌</h2>
 <div class="scroll-row">
-<img src="IMG-20260328-WA0028.jpg" width="120">
-<img src="https://via.placeholder.com/120/eedbff">
-<img src="https://via.placeholder.com/120/d8c4ff">
-<img src="https://via.placeholder.com/120/f5edff">
+<div class="card" onclick="openProduct('Demon Slayer 🗡️',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Demon Slayer</p><p>₹50</p></div>
+<div class="card" onclick="openProduct('Spy x Family 🔍',45,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Spy x Family</p><p>₹45</p></div>
+<div class="card" onclick="openProduct('Jujutsu Kaisen ⛩️',70,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Jujutsu</p><p>₹70</p></div>
+<div class="card" onclick="openProduct('Naruto 🍥',60,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Naruto</p><p>₹60</p></div>
+<div class="card" onclick="openProduct('One Piece 👒',65,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>One Piece</p><p>₹65</p></div>
 </div>
 </div>
 
-<!-- FUNCTION TEMPLATE -->
+<!-- AESTHETIC -->
+<div class="section">
+<h2>Aesthetic 🌸</h2>
+<div class="scroll-row">
+<div class="card" onclick="openProduct('Floral 🌸',60,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Floral</p><p>₹60</p></div>
+<div class="card" onclick="openProduct('Lavender Love 💜',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Lavender</p><p>₹50</p></div>
+<div class="card" onclick="openProduct('Blush & Petal 💗',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Blush</p><p>₹50</p></div>
+<div class="card" onclick="openProduct('Botanical 💚',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Botanical</p><p>₹50</p></div>
+<div class="card" onclick="openProduct('Cloudy Blue 💙',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Cloudy</p><p>₹50</p></div>
+<div class="card" onclick="openProduct('Vintage Era 🕰️',60,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Vintage</p><p>₹60</p></div>
+</div>
+</div>
+
+<!-- CHIBI -->
+<div class="section">
+<h2>Chibi 🧸</h2>
+<div class="scroll-row">
+<div class="card" onclick="openProduct('Demon Slayer Chibi 🗡️',60,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Demon</p><p>₹60</p></div>
+<div class="card" onclick="openProduct('BTS Chibi 🎤',70,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>BTS</p><p>₹70</p></div>
+<div class="card" onclick="openProduct('Blackpink Chibi 🖤💗',70,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Blackpink</p><p>₹70</p></div>
+<div class="card" onclick="openProduct('Rabbit Chibi 🐰',45,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Rabbit</p><p>₹45</p></div>
+<div class="card" onclick="openProduct('Dog Chibi 🐶',55,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Dog</p><p>₹55</p></div>
+<div class="card" onclick="openProduct('Cat Chibi 🐱',55,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Cat</p><p>₹55</p></div>
+</div>
+</div>
+
+<!-- CARTOON -->
+<div class="section">
+<h2>Cartoon 🎨</h2>
+<div class="scroll-row">
+<div class="card" onclick="openProduct('We Bare Bears 🐻‍❄️',40,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Bears</p><p>₹40</p></div>
+<div class="card" onclick="openProduct('Hello Kitty 🎀',40,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Hello Kitty</p><p>₹40</p></div>
+<div class="card" onclick="openProduct('Kuromi 🖤😈',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Kuromi</p><p>₹50</p></div>
+<div class="card" onclick="openProduct('Doraemon 🤖',45,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Doraemon</p><p>₹45</p></div>
+<div class="card" onclick="openProduct('Shinchan 😂',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Shinchan</p><p>₹50</p></div>
+</div>
+</div>
+
+<!-- KPOP -->
+<div class="section">
+<h2>K-pop 🎤</h2>
+<div class="scroll-row">
+<div class="card" onclick="openProduct('Blackpink 🖤💗',70,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Blackpink</p><p>₹70</p></div>
+<div class="card" onclick="openProduct('BTS 🎤',70,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>BTS</p><p>₹70</p></div>
+<div class="card" onclick="openProduct('TWICE 🍭',60,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Twice</p><p>₹60</p></div>
+<div class="card" onclick="openProduct('BABYMONSTER 👑',65,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>BabyMonster</p><p>₹65</p></div>
+<div class="card" onclick="openProduct('Stray Kids 🔥',60,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Stray Kids</p><p>₹60</p></div>
+</div>
+</div>
+
+<!-- QUOTES -->
+<div class="section">
+<h2>Quote 💅</h2>
+<div class="scroll-row">
+<div class="card" onclick="openProduct('Soft Motivation 🌸',60,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Soft Motivation</p><p>₹60</p></div>
+<div class="card" onclick="openProduct('Self Love Era 💗',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Self Love</p><p>₹50</p></div>
+<div class="card" onclick="openProduct('Unbothered Energy 💅',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Unbothered</p><p>₹50</p></div>
+<div class="card" onclick="openProduct('Glow Up Mindset ✨',60,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Glow Up</p><p>₹60</p></div>
+<div class="card" onclick="openProduct('Late Night Thoughts 🌙',50,'https://via.placeholder.com/300')"><img src="https://via.placeholder.com/150"><p>Late Night</p><p>₹50</p></div>
+</div>
+</div>
+
+</div>
+
+<!-- PRODUCT PAGE -->
+<div id="productPage">
+
+<button onclick="goBack()">⬅ Back</button>
+
+<img id="pImg" class="product-img">
+
+<h2 id="pName"></h2>
+
+<p><b>Shipping</b> — Ships within 3-5 days</p>
+<p><b>Support</b> — DM on WhatsApp for queries</p>
+
+<h3>Making Time:</h3>
+<p>Each bookmark is handmade and laminated carefully. It takes around 1–2 days.</p>
+
+<h2 id="pPrice"></h2>
+
+<button onclick="order()">Order on WhatsApp</button>
+
+</div>
+
 <script>
-function toggleView(id){
-  document.getElementById(id).classList.toggle("hidden");
+function openProduct(name, price, img){
+  document.getElementById("home").style.display="none";
+  document.getElementById("productPage").style.display="block";
+  document.getElementById("pName").innerText=name;
+  document.getElementById("pPrice").innerText="₹"+price;
+  document.getElementById("pImg").src=img;
 }
 
-function showProduct(name, price){
-  document.getElementById("productView").classList.remove("hidden");
-  document.getElementById("pName").innerText = name;
-  document.getElementById("pPrice").innerText = "₹" + price;
-  window.scrollTo(0, document.body.scrollHeight);
+function goBack(){
+  document.getElementById("home").style.display="block";
+  document.getElementById("productPage").style.display="none";
 }
 
 function order(){
-  let text = "Hello I want to order " + document.getElementById("pName").innerText;
-  window.open("https://wa.me/919958676897?text=" + encodeURIComponent(text));
-}
-
-function customOrder(){
-  window.open("https://wa.me/919958676897?text=Hello I want to order a custom bookmark");
+  let text="Hello I want to order "+document.getElementById("pName").innerText;
+  window.open("https://wa.me/919958676897?text="+encodeURIComponent(text));
 }
 </script>
-
-<!-- ===== ANIME ===== -->
-<div class="section">
-<h2>Anime Bookmark 🎌 <button class="view-btn" onclick="toggleView('anime')">View All</button></h2>
-
-<div class="scroll-row">
-<div class="card" onclick="showProduct('Demon Slayer',50)"><img src="https://via.placeholder.com/150"><p>Demon Slayer</p><p>₹50</p></div>
-<div class="card" onclick="showProduct('Spy x Family',45)"><img src="https://via.placeholder.com/150"><p>Spy x Family</p><p>₹45</p></div>
-<div class="card" onclick="showProduct('Jujutsu Kaisen',70)"><img src="https://via.placeholder.com/150"><p>Jujutsu</p><p>₹70</p></div>
-<div class="card" onclick="showProduct('Naruto',60)"><img src="https://via.placeholder.com/150"><p>Naruto</p><p>₹60</p></div>
-<div class="card" onclick="showProduct('One Piece',65)"><img src="https://via.placeholder.com/150"><p>One Piece</p><p>₹65</p></div>
-</div>
-
-<div id="anime" class="hidden vertical">
-<div class="card" onclick="showProduct('Demon Slayer',50)"><img src="https://via.placeholder.com/150"><p>₹50</p></div>
-<div class="card" onclick="showProduct('Spy x Family',45)"><img src="https://via.placeholder.com/150"><p>₹45</p></div>
-<div class="card" onclick="showProduct('Jujutsu',70)"><img src="https://via.placeholder.com/150"><p>₹70</p></div>
-<div class="card" onclick="showProduct('Naruto',60)"><img src="https://via.placeholder.com/150"><p>₹60</p></div>
-<div class="card" onclick="showProduct('One Piece',65)"><img src="https://via.placeholder.com/150"><p>₹65</p></div>
-</div>
-</div>
-
-<!-- ===== AESTHETIC ===== -->
-<div class="section">
-<h2>Aesthetic 🌸 <button class="view-btn" onclick="toggleView('aesthetic')">View All</button></h2>
-
-<div class="scroll-row">
-<div class="card" onclick="showProduct('Floral',60)"><img src="https://via.placeholder.com/150"><p>Floral</p><p>₹60</p></div>
-<div class="card" onclick="showProduct('Lavender Love',50)"><img src="https://via.placeholder.com/150"><p>Lavender</p><p>₹50</p></div>
-<div class="card" onclick="showProduct('Blush & Petal',50)"><img src="https://via.placeholder.com/150"><p>Blush</p><p>₹50</p></div>
-<div class="card" onclick="showProduct('Botanical',50)"><img src="https://via.placeholder.com/150"><p>Botanical</p><p>₹50</p></div>
-<div class="card" onclick="showProduct('Cloudy Blue',50)"><img src="https://via.placeholder.com/150"><p>Cloudy</p><p>₹50</p></div>
-<div class="card" onclick="showProduct('Vintage',60)"><img src="https://via.placeholder.com/150"><p>Vintage</p><p>₹60</p></div>
-</div>
-
-<div id="aesthetic" class="hidden vertical">
-<div class="card"><img src="https://via.placeholder.com/150"><p>₹60</p></div>
-<div class="card"><img src="https://via.placeholder.com/150"><p>₹50</p></div>
-<div class="card"><img src="https://via.placeholder.com/150"><p>₹50</p></div>
-<div class="card"><img src="https://via.placeholder.com/150"><p>₹50</p></div>
-<div class="card"><img src="https://via.placeholder.com/150"><p>₹50</p></div>
-<div class="card"><img src="https://via.placeholder.com/150"><p>₹60</p></div>
-</div>
-</div>
-
-<!-- ===== CHIBI ===== -->
-<div class="section">
-<h2>Chibi 🧸 <button class="view-btn" onclick="toggleView('chibi')">View All</button></h2>
-
-<div class="scroll-row">
-<div class="card" onclick="showProduct('Demon Chibi',60)"><img src="https://via.placeholder.com/150"><p>Demon</p><p>₹60</p></div>
-<div class="card" onclick="showProduct('BTS Chibi',70)"><img src="https://via.placeholder.com/150"><p>BTS</p><p>₹70</p></div>
-<div class="card" onclick="showProduct('Blackpink Chibi',70)"><img src="https://via.placeholder.com/150"><p>Blackpink</p><p>₹70</p></div>
-<div class="card" onclick="showProduct('Rabbit',45)"><img src="https://via.placeholder.com/150"><p>Rabbit</p><p>₹45</p></div>
-<div class="card" onclick="showProduct('Dog',55)"><img src="https://via.placeholder.com/150"><p>Dog</p><p>₹55</p></div>
-<div class="card" onclick="showProduct('Cat',55)"><img src="https://via.placeholder.com/150"><p>Cat</p><p>₹55</p></div>
-</div>
-</div>
-
-<!-- ===== CARTOON ===== -->
-<div class="section">
-<h2>Cartoon 🎨 <button class="view-btn" onclick="toggleView('cartoon')">View All</button></h2>
-
-<div class="scroll-row">
-<div class="card" onclick="showProduct('We Bare Bears',40)"><img src="https://via.placeholder.com/150"><p>Bears</p><p>₹40</p></div>
-<div class="card" onclick="showProduct('Hello Kitty',40)"><img src="https://via.placeholder.com/150"><p>Hello Kitty</p><p>₹40</p></div>
-<div class="card" onclick="showProduct('Kuromi',50)"><img src="https://via.placeholder.com/150"><p>Kuromi</p><p>₹50</p></div>
-<div class="card" onclick="showProduct('Doraemon',45)"><img src="https://via.placeholder.com/150"><p>Doraemon</p><p>₹45</p></div>
-<div class="card" onclick="showProduct('Shinchan',50)"><img src="https://via.placeholder.com/150"><p>Shinchan</p><p>₹50</p></div>
-</div>
-</div>
-
-<!-- ===== KPOP ===== -->
-<div class="section">
-<h2>K-pop 🎤 <button class="view-btn" onclick="toggleView('kpop')">View All</button></h2>
-
-<div class="scroll-row">
-<div class="card" onclick="showProduct('Blackpink',70)"><img src="https://via.placeholder.com/150"><p>Blackpink</p><p>₹70</p></div>
-<div class="card" onclick="showProduct('BTS',70)"><img src="https://via.placeholder.com/150"><p>BTS</p><p>₹70</p></div>
-<div class="card" onclick="showProduct('Twice',60)"><img src="https://via.placeholder.com/150"><p>Twice</p><p>₹60</p></div>
-<div class="card" onclick="showProduct('Babymonster',65)"><img src="https://via.placeholder.com/150"><p>BabyMonster</p><p>₹65</p></div>
-<div class="card" onclick="showProduct('Stray Kids',60)"><img src="https://via.placeholder.com/150"><p>Stray Kids</p><p>₹60</p></div>
-</div>
-</div>
-
-<!-- ===== QUOTES ===== -->
-<div class="section">
-<h2>Quote 💅 <button class="view-btn" onclick="toggleView('quote')">View All</button></h2>
-
-<div class="scroll-row">
-<div class="card" onclick="showProduct('Soft Motivation',60)"><img src="https://via.placeholder.com/150"><p>Soft</p><p>₹60</p></div>
-<div class="card" onclick="showProduct('Self Love',50)"><img src="https://via.placeholder.com/150"><p>Self Love</p><p>₹50</p></div>
-<div class="card" onclick="showProduct('Unbothered',50)"><img src="https://via.placeholder.com/150"><p>Unbothered</p><p>₹50</p></div>
-<div class="card" onclick="showProduct('Glow Up',60)"><img src="https://via.placeholder.com/150"><p>Glow Up</p><p>₹60</p></div>
-<div class="card" onclick="showProduct('Late Night',50)"><img src="https://via.placeholder.com/150"><p>Late Night</p><p>₹50</p></div>
-</div>
-</div>
-
-<!-- PRODUCT VIEW -->
-<div id="productView" class="hidden section">
-<h2 id="pName"></h2>
-<img src="https://via.placeholder.com/200">
-<p id="pPrice"></p>
-
-<button onclick="order()">Shop Now</button>
-
-<p>
-Hello guys this is Prakriti 💜<br>
-Products take around one week for delivery.<br>
-For enquiry contact me on Instagram.<br>
-bye guy's :)
-</p>
-</div>
-
-<!-- CUSTOM -->
-<div class="section">
-<h2>Custom Bookmark ✨</h2>
-<button onclick="customOrder()">Shop Now</button>
-</div>
 
 </body>
 </html>
